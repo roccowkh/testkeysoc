@@ -14,6 +14,7 @@ class DetailsViewController: UIViewController {
     var collectionName: String?
     let nameLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines=0
         return label
     }()
     
@@ -50,12 +51,13 @@ class DetailsViewController: UIViewController {
         
         cancelButton.snp.makeConstraints { maker in
             maker.leading.top.equalToSuperview().offset(12)
-            
+            maker.width.equalTo(80)
         }
         nameLabel.snp.makeConstraints { maker in
             maker.centerX.equalToSuperview()
             maker.top.equalToSuperview().offset(20)
             maker.leading.greaterThanOrEqualTo(cancelButton.snp.trailing)
+            
         }
         price.snp.makeConstraints { maker in
             maker.centerX.equalToSuperview()
@@ -86,15 +88,4 @@ class DetailsViewController: UIViewController {
             self.bookmarkButton.setTitle("unbookmark", for: .normal)
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

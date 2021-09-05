@@ -18,12 +18,7 @@ class TabOneViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.white
         self.title = "Tab 1"
-//        self.view.addSubview(v)
-//        v.snp.makeConstraints { maker in
-//            maker.centerX.equalToSuperview()
-//            maker.centerY.equalToSuperview()
-//            maker.width.height.equalToSuperview()
-//        }
+
         setupTableView()
     }
     override func didReceiveMemoryWarning() {

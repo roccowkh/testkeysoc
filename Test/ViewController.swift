@@ -47,7 +47,6 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
 
           if let data = data,
             let filmSummary = try? JSONDecoder().decode(Json4Swift_Base.self, from: data) {
-//            completionHandler(filmSummary.results ?? [])
             print(filmSummary)
             self.album = filmSummary.results!
             let albumManager = AlbumManageer.shared
@@ -59,13 +58,11 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
     
     func getList() {
         let url = URL(string:"https://itunes.apple.com/search?term=jack+johnson&entity=album")!
-//        let url = URL(string: "https://bit.ly/3sspdFO")!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             print("\(String(data: data!, encoding: .utf8))")
-//            let decoder = JSONDecoder()
             let jsonString = (String(data: data!, encoding: .utf8))!
             let data = Data(jsonString.utf8)
             do {
@@ -79,21 +76,6 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
             } catch let error as NSError {
                 print("Failed to load: \(error.localizedDescription)")
             }
-//            do {
-//                let people = try decoder.decode([Person].self, from: jsonData)
-//                print(people)
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-//            do {
-//                if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-//                    // try to read out a string array
-//                    let results = json["results"]
-//                    print(results)
-//                }
-//            } catch let error as NSError {
-//                print("Failed to load: \(error.localizedDescription)")
-//            }
         }
         task.resume()
     }
